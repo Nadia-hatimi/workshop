@@ -1,0 +1,25 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: kubernetes-demo-hello-app
+  labels: 
+     app: hello-app
+
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: hello-app
+
+  template:
+    metadata:
+      labels:
+        app: hello-app
+    spec:
+      containers:
+      - name: hello-app  
+        image: 895520807261.dkr.ecr.us-east-1.amazonaws.com/ecr-up:v22
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+    
